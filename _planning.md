@@ -370,4 +370,4 @@ After login, you're taken to the Dashboard. If you're new, a Cycle Information F
 3. A PDF named Final Project_prompts.pdf containing examples of the prompts used to build the project
 4. A markdown file named Final Project_planning.md with all AI-generated non-code content
 5. Link(s) to any live version of the product (if applicable)
-   - Netlify link: [[FlowCycleNetlify]([flowcycle.netlify.app](https://flowcycle.netlify.app/))](https://flowcycle.netlify.app/)
+   - Netlify link: [FlowCycle](https://flowcycle.netlify.app/)
