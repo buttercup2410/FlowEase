@@ -14,7 +14,7 @@ export default function Help() {
         </CardHeader>
         <CardContent className="space-y-4">
           <p className="text-muted-foreground">
-            Welcome to the FlowCycle Help Center. Find answers to common questions below.
+            Welcome to the FlowEase Help Center. Find answers to common questions below.
           </p>
           
           <Accordion type="single" collapsible className="mt-6">

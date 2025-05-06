@@ -79,6 +79,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json(product);
   });
 
+  app.get("/api/products/:id/flow-types", async (req, res) => {
+    try {
+      const flowTypes = await storage.getProductFlowTypes(parseInt(req.params.id));
+      res.json(flowTypes);
+    } catch (error) {
+      res.status(400).json({ message: "Failed to get product flow types" });
+    }
+  });
+
   // Subscription routes
   app.get("/api/subscriptions/:userId", async (req, res) => {
     const subscription = await storage.getSubscriptionByUser(parseInt(req.params.userId));

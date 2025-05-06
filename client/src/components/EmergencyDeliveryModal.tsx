@@ -93,21 +93,21 @@ export default function EmergencyDeliveryModal() {
         onClick={() => setIsEmergencyModalOpen(false)}
       />
       <div className="absolute inset-0 flex items-center justify-center p-4">
-        <div className="bg-white rounded-xl shadow-xl max-w-md w-full" onClick={(e) => e.stopPropagation()}>
-          <div className="p-6 border-b border-gray-200 flex items-center justify-between">
-            <h3 className="text-xl font-semibold text-gray-800">Emergency Delivery</h3>
+        <div className="bg-background rounded-xl shadow-xl max-w-md w-full" onClick={(e) => e.stopPropagation()}>
+          <div className="p-6 border-b border-border flex items-center justify-between">
+            <h3 className="text-xl font-semibold text-foreground">Emergency Delivery</h3>
             <Button 
               variant="ghost" 
               size="icon" 
               onClick={() => setIsEmergencyModalOpen(false)}
-              className="text-gray-500 hover:text-gray-700"
+              className="text-muted-foreground hover:text-foreground"
             >
               <X className="h-5 w-5" />
             </Button>
           </div>
 
           <div className="p-6">
-            <p className="text-gray-600 mb-6">
+            <p className="text-muted-foreground mb-6">
               We'll deliver your selected products within 1 hour to your location. A $9.99 rush fee applies.
             </p>
 
@@ -118,7 +118,7 @@ export default function EmergencyDeliveryModal() {
                   name="productId"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Select Product</FormLabel>
+                      <FormLabel className="text-foreground">Select Product</FormLabel>
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
@@ -149,7 +149,7 @@ export default function EmergencyDeliveryModal() {
                   name="address"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Delivery Address</FormLabel>
+                      <FormLabel className="text-foreground">Delivery Address</FormLabel>
                       <FormControl>
                         <Input {...field} placeholder="123 Main St, City, State, ZIP" />
                       </FormControl>
@@ -163,7 +163,7 @@ export default function EmergencyDeliveryModal() {
                   name="phone"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Phone Number</FormLabel>
+                      <FormLabel className="text-foreground">Phone Number</FormLabel>
                       <FormControl>
                         <Input {...field} placeholder="(123) 456-7890" />
                       </FormControl>
@@ -177,7 +177,7 @@ export default function EmergencyDeliveryModal() {
                   name="notes"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Delivery Notes (Optional)</FormLabel>
+                      <FormLabel className="text-foreground">Delivery Notes (Optional)</FormLabel>
                       <FormControl>
                         <Textarea 
                           {...field} 
@@ -192,7 +192,7 @@ export default function EmergencyDeliveryModal() {
 
                 <Button
                   type="submit"
-                  className="w-full bg-secondary hover:bg-secondary/90"
+                  className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground"
                 >
                   Confirm Emergency Delivery
                 </Button>

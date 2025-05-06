@@ -25,7 +25,7 @@ export default function Footer() {
           <div className="flex items-center mb-4 md:mb-0">
             <Heart className="h-5 w-5 text-primary mr-2" />
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} FlowCycle. All rights reserved.
+              © {new Date().getFullYear()} FlowEase. All rights reserved.
             </p>
           </div>
           

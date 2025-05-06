@@ -35,8 +35,8 @@ export default function Header() {
           <div className="flex items-center">
             <Button variant="ghost" className="p-0 flex items-center space-x-2" onClick={() => setLocation("/dashboard")}>
               <AppIcon className="h-8 w-8 text-primary" />
-              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                FlowCycle
+              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary dark:from-white dark:to-white bg-clip-text text-transparent">
+                FlowEase
               </span>
             </Button>
           </div>
@@ -75,10 +75,10 @@ export default function Header() {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuItem className="cursor-pointer">
+                  <DropdownMenuItem onClick={() => setLocation("/profile")} className="cursor-pointer">
                     Profile
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="cursor-pointer">
+                  <DropdownMenuItem onClick={() => setLocation("/settings")} className="cursor-pointer">
                     Settings
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">

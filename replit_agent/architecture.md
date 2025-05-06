@@ -1,8 +1,8 @@
-# Architecture Overview - FlowCycle
+# Architecture Overview - FlowEase
 
 ## 1. Overview
 
-FlowCycle is a full-stack web application for menstrual cycle tracking and subscription-based delivery of period products. The application allows users to:
+FlowEase is a full-stack web application for menstrual cycle tracking and subscription-based delivery of period products. The application allows users to:
 
 - Track their menstrual cycle data
 - Browse and purchase period products

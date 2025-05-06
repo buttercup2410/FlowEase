@@ -40,7 +40,7 @@ export default function Login() {
       if (success) {
         toast({
           title: "Login successful",
-          description: "Welcome back to FlowCycle!",
+          description: "Welcome back to FlowEase!",
         });
         setLocation("/dashboard");
       } else {
@@ -62,11 +62,11 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gray-50">
-      <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-8">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-background">
+      <div className="bg-card rounded-xl shadow-lg w-full max-w-md p-8">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-primary font-heading">FlowCycle</h1>
-          <p className="text-gray-600 mt-2">Sign in to your account</p>
+          <h1 className="text-3xl font-bold text-primary font-heading">FlowEase</h1>
+          <p className="text-muted-foreground mt-2">Sign in to your account</p>
         </div>
 
         <Form {...form}>
@@ -76,13 +76,13 @@ export default function Login() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-gray-500">Email Address</FormLabel>
+                  <FormLabel className="text-muted-foreground">Email Address</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
                       type="email"
                       placeholder="your@email.com"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     />
                   </FormControl>
                   <FormMessage />
@@ -95,13 +95,13 @@ export default function Login() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-gray-500">Password</FormLabel>
+                  <FormLabel className="text-muted-foreground">Password</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
                       type="password"
                       placeholder="••••••••"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     />
                   </FormControl>
                   <FormMessage />
@@ -122,7 +122,7 @@ export default function Login() {
                         id="remember-me"
                       />
                     </FormControl>
-                    <FormLabel htmlFor="remember-me" className="text-sm text-gray-700 cursor-pointer">
+                    <FormLabel htmlFor="remember-me" className="text-sm text-muted-foreground cursor-pointer">
                       Remember me
                     </FormLabel>
                   </FormItem>
@@ -137,7 +137,7 @@ export default function Login() {
             <Button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             >
               {isLoading ? "Signing in..." : "Sign In"}
             </Button>
@@ -145,7 +145,7 @@ export default function Login() {
         </Form>
 
         <div className="mt-6 text-center">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-muted-foreground">
             Don't have an account?{" "}
             <Button 
               variant="link" 

@@ -33,7 +33,7 @@ export function CartProvider({ children, userId }: CartProviderProps) {
   // Load cart from localStorage on initial load
   useEffect(() => {
     if (userId) {
-      const storedCart = localStorage.getItem(`flowcycle_cart_${userId}`);
+      const storedCart = localStorage.getItem(`FlowEasecart_${userId}`);
       if (storedCart) {
         try {
           setCartItems(JSON.parse(storedCart));
@@ -47,7 +47,7 @@ export function CartProvider({ children, userId }: CartProviderProps) {
   // Save cart to localStorage whenever it changes
   useEffect(() => {
     if (userId) {
-      localStorage.setItem(`flowcycle_cart_${userId}`, JSON.stringify(cartItems));
+      localStorage.setItem(`FlowEase_cart_${userId}`, JSON.stringify(cartItems));
     }
   }, [cartItems, userId]);
 

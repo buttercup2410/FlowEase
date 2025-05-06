@@ -5,6 +5,8 @@ export type User = {
   firstName: string;
   lastName: string;
   email: string;
+  avatarStyle?: string;
+  avatarOptions?: string;
 };
 
 export interface AuthContextType {
@@ -13,6 +15,7 @@ export interface AuthContextType {
   login: (email: string, password: string) => Promise<boolean>;
   register: (firstName: string, lastName: string, email: string, password: string) => Promise<boolean>;
   logout: () => void;
+  updateUser: (userData: Partial<User>) => Promise<boolean>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -27,7 +30,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   // Check localStorage for existing session on initial load
   useEffect(() => {
-    const storedUser = localStorage.getItem("flowcycle_user");
+    const storedUser = localStorage.getItem("FlowEase_user");
     if (storedUser) {
       try {
         const parsedUser = JSON.parse(storedUser);
@@ -35,7 +38,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         setIsAuthenticated(true);
       } catch (err) {
         console.error("Failed to parse stored user", err);
-        localStorage.removeItem("flowcycle_user");
+        localStorage.removeItem("FlowEase_user");
       }
     }
   }, []);
@@ -44,7 +47,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     // In a real app, this would make an API call
     // For now, we'll check against localStorage
     try {
-      const storedUsers = localStorage.getItem("flowcycle_users");
+      const storedUsers = localStorage.getItem("FlowEase_users");
       if (!storedUsers) {
         return false;
       }
@@ -62,7 +65,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       const { password: _, ...userWithoutPassword } = matchedUser;
       setUser(userWithoutPassword);
       setIsAuthenticated(true);
-      localStorage.setItem("flowcycle_user", JSON.stringify(userWithoutPassword));
+      localStorage.setItem("FlowEase_user", JSON.stringify(userWithoutPassword));
       return true;
     } catch (err) {
       console.error("Login failed", err);
@@ -78,7 +81,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   ): Promise<boolean> => {
     try {
       // Check if user already exists
-      const storedUsers = localStorage.getItem("flowcycle_users");
+      const storedUsers = localStorage.getItem("FlowEase_users");
       const users = storedUsers ? JSON.parse(storedUsers) : [];
       
       const existingUser = users.find((u: any) => u.email === email);
@@ -96,13 +99,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
       };
 
       users.push(newUser);
-      localStorage.setItem("flowcycle_users", JSON.stringify(users));
+      localStorage.setItem("FlowEase_users", JSON.stringify(users));
 
       // Login the user (without password in session)
       const { password: _, ...userWithoutPassword } = newUser;
       setUser(userWithoutPassword);
       setIsAuthenticated(true);
-      localStorage.setItem("flowcycle_user", JSON.stringify(userWithoutPassword));
+      localStorage.setItem("FlowEase_user", JSON.stringify(userWithoutPassword));
       
       return true;
     } catch (err) {
@@ -114,10 +117,41 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const logout = () => {
     setUser(null);
     setIsAuthenticated(false);
-    localStorage.removeItem("flowcycle_user");
+    localStorage.removeItem("FlowEase_user");
   };
 
-  const value = { isAuthenticated, user, login, register, logout };
+  const updateUser = async (userData: Partial<User>): Promise<boolean> => {
+    try {
+      if (!user) return false;
+
+      const storedUsers = localStorage.getItem("FlowEase_users");
+      if (!storedUsers) return false;
+
+      const users = JSON.parse(storedUsers);
+      const userIndex = users.findIndex((u: any) => u.id === user.id);
+      
+      if (userIndex === -1) return false;
+
+      // Update user data
+      const updatedUser = { ...users[userIndex], ...userData };
+      users[userIndex] = updatedUser;
+
+      // Save to localStorage
+      localStorage.setItem("FlowEase_users", JSON.stringify(users));
+
+      // Update current session
+      const { password: _, ...userWithoutPassword } = updatedUser;
+      setUser(userWithoutPassword);
+      localStorage.setItem("FlowEase_user", JSON.stringify(userWithoutPassword));
+
+      return true;
+    } catch (err) {
+      console.error("Update failed", err);
+      return false;
+    }
+  };
+
+  const value = { isAuthenticated, user, login, register, logout, updateUser };
   
   return (
     <AuthContext.Provider value={value}>

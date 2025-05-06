@@ -38,7 +38,7 @@ export function CycleDataProvider({ children, userId }: CycleDataProviderProps) 
   // Load cycle data from localStorage when userId changes
   useEffect(() => {
     if (userId) {
-      const storedData = localStorage.getItem(`flowcycle_cycle_data_${userId}`);
+      const storedData = localStorage.getItem(`FlowEase_cycle_data_${userId}`);
       if (storedData) {
         try {
           setCycleData(JSON.parse(storedData));
@@ -55,7 +55,7 @@ export function CycleDataProvider({ children, userId }: CycleDataProviderProps) 
   const updateCycleData = (data: CycleData) => {
     setCycleData(data);
     if (userId) {
-      localStorage.setItem(`flowcycle_cycle_data_${userId}`, JSON.stringify(data));
+      localStorage.setItem(`FlowEase_cycle_data_${userId}`, JSON.stringify(data));
     }
   };
 

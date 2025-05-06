@@ -57,7 +57,7 @@ export default function Register() {
       if (success) {
         toast({
           title: "Registration successful",
-          description: "Welcome to FlowCycle!",
+          description: "Welcome to FlowEase",
         });
         setLocation("/dashboard");
       } else {
@@ -79,11 +79,11 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gray-50">
-      <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-8">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-background">
+      <div className="bg-card rounded-xl shadow-lg w-full max-w-md p-8">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-primary font-heading">FlowCycle</h1>
-          <p className="text-gray-600 mt-2">Create a new account</p>
+          <h1 className="text-3xl font-bold text-primary font-heading">FlowEase</h1>
+          <p className="text-muted-foreground mt-2">Create a new account</p>
         </div>
 
         <Form {...form}>
@@ -94,12 +94,12 @@ export default function Register() {
                 name="firstName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-500">First Name</FormLabel>
+                    <FormLabel className="text-muted-foreground">First Name</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
                         placeholder="Jane"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                        className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                       />
                     </FormControl>
                     <FormMessage />
@@ -112,12 +112,12 @@ export default function Register() {
                 name="lastName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-500">Last Name</FormLabel>
+                    <FormLabel className="text-muted-foreground">Last Name</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
                         placeholder="Doe"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                        className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                       />
                     </FormControl>
                     <FormMessage />
@@ -131,13 +131,13 @@ export default function Register() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-gray-500">Email Address</FormLabel>
+                  <FormLabel className="text-muted-foreground">Email Address</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
                       type="email"
                       placeholder="your@email.com"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     />
                   </FormControl>
                   <FormMessage />
@@ -150,13 +150,13 @@ export default function Register() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-gray-500">Password</FormLabel>
+                  <FormLabel className="text-muted-foreground">Password</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
                       type="password"
                       placeholder="••••••••"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     />
                   </FormControl>
                   <FormMessage />
@@ -169,13 +169,13 @@ export default function Register() {
               name="confirmPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-gray-500">Confirm Password</FormLabel>
+                  <FormLabel className="text-muted-foreground">Confirm Password</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
                       type="password"
                       placeholder="••••••••"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     />
                   </FormControl>
                   <FormMessage />
@@ -196,10 +196,9 @@ export default function Register() {
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">
-                    <FormLabel htmlFor="terms" className="text-sm text-gray-700 cursor-pointer">
+                    <FormLabel htmlFor="terms" className="text-sm text-muted-foreground cursor-pointer">
                       I agree to the <Button variant="link" className="p-0 text-primary">Terms</Button> and <Button variant="link" className="p-0 text-primary">Privacy Policy</Button>
                     </FormLabel>
-                    <FormMessage />
                   </div>
                 </FormItem>
               )}
@@ -208,7 +207,7 @@ export default function Register() {
             <Button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             >
               {isLoading ? "Creating account..." : "Create Account"}
             </Button>
@@ -216,7 +215,7 @@ export default function Register() {
         </Form>
 
         <div className="mt-6 text-center">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-muted-foreground">
             Already have an account?{" "}
             <Button 
               variant="link" 

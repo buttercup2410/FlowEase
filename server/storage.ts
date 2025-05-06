@@ -67,6 +67,88 @@ export class MemStorage implements IStorage {
     this.subscriptionIdCounter = 1;
     this.subscriptionProductIdCounter = 1;
     this.emergencyDeliveryIdCounter = 1;
+
+    // Initialize products
+    this.initializeProducts();
+  }
+
+  private initializeProducts() {
+    const initialProducts = [
+      {
+        id: this.productIdCounter++,
+        name: "Organic Cotton Tampons",
+        description: "Pack of 18 biodegradable tampons made from 100% organic cotton.",
+        shortDescription: "Pack of 18",
+        price: 5.9, // Store as cents
+        imageUrl: "/images/products/1.jpeg",
+        category: "tampons",
+        isEcoCertified: true,
+        popularity: 95,
+        ecoRating: 9,
+        unit: "pack"
+      },
+      {
+        id: this.productIdCounter++,
+        name: "Reusable Menstrual Cup",
+        description: "Medical-grade silicone cup that can be used for years. Available in multiple sizes.",
+        shortDescription: "One size",
+        price: 5.9,
+        imageUrl: "/images/products/3.jpeg",
+        category: "cups",
+        isEcoCertified: true,
+        popularity: 85,
+        ecoRating: 10,
+        unit: "cup"
+      },
+      {
+        id: this.productIdCounter++,
+        name: "Reusable Organic Cotton Pads",
+        description: "Set of 5 washable pads made from organic cotton with leak-proof backing.",
+        shortDescription: "Set of 5",
+        price: 4.9,
+        imageUrl: "/images/products/4.jpeg",
+        category: "pads",
+        isEcoCertified: true,
+        popularity: 78,
+        ecoRating: 10,
+        unit: "set"
+      },
+      {
+        id: this.productIdCounter++,
+        name: "Period Underwear",
+        description: "Absorbent underwear that replaces disposable products. Machine washable.",
+        shortDescription: "One pair",
+        price: 6.9,
+        imageUrl: "/images/products/2.jpeg",
+        category: "period-underwear",
+        isEcoCertified: true,
+        popularity: 90,
+        ecoRating: 9,
+        unit: "pair"
+      }
+    ];
+
+    // Add products to storage
+    initialProducts.forEach(product => {
+      this.products.set(product.id, product);
+    });
+
+    // Add flow types for each product
+    const flowTypeMap = {
+      1: ["light", "moderate"],
+      2: ["light", "moderate", "heavy", "variable"],
+      3: ["moderate", "heavy"],
+      4: ["light", "moderate", "variable"]
+    };
+
+    Object.entries(flowTypeMap).forEach(([productId, flowTypes]) => {
+      const productFlowTypesList = flowTypes.map(flowType => ({
+        id: this.productFlowTypeIdCounter++,
+        productId: parseInt(productId),
+        flowType
+      }));
+      this.productFlowTypes.set(parseInt(productId), productFlowTypesList);
+    });
   }
 
   // User methods

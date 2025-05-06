@@ -148,8 +148,8 @@ export default function Subscription() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-gray-800 font-heading">Subscription</h2>
-        <p className="text-gray-600">Never run out of supplies with our flexible subscription</p>
+        <h2 className="text-2xl font-bold text-foreground font-heading">Subscription</h2>
+        <p className="text-muted-foreground">Never run out of supplies with our flexible subscription</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -162,10 +162,10 @@ export default function Subscription() {
               <Form {...form}>
                 <form id="subscription-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                   <div>
-                    <h4 className="text-lg font-medium text-gray-800 mb-4">1. Choose Your Products</h4>
+                    <h4 className="text-lg font-medium text-foreground mb-4">1. Choose Your Products</h4>
                     <div className="space-y-4">
                       {products.map((product) => (
-                        <div key={product.id} className="border border-gray-200 rounded-lg p-4 flex items-center">
+                        <div key={product.id} className="border border-border rounded-lg p-4 flex items-center">
                           <FormField
                             control={form.control}
                             name={`products.${product.id}`}
@@ -179,8 +179,8 @@ export default function Subscription() {
                                   />
                                 </FormControl>
                                 <FormLabel htmlFor={`product-${product.id}`} className="cursor-pointer flex-1">
-                                  <span className="block font-medium text-gray-800">{product.name}</span>
-                                  <span className="block text-sm text-gray-600">{product.shortDescription}</span>
+                                  <span className="block font-medium text-foreground">{product.name}</span>
+                                  <span className="block text-sm text-muted-foreground">{product.shortDescription}</span>
                                 </FormLabel>
                               </FormItem>
                             )}
@@ -219,7 +219,7 @@ export default function Subscription() {
                   </div>
 
                   <div>
-                    <h4 className="text-lg font-medium text-gray-800 mb-4">2. Select Delivery Frequency</h4>
+                    <h4 className="text-lg font-medium text-foreground mb-4">2. Select Delivery Frequency</h4>
                     <FormField
                       control={form.control}
                       name="frequency"
@@ -228,7 +228,7 @@ export default function Subscription() {
                           <FormControl>
                             <RadioGroup
                               onValueChange={field.onChange}
-                              defaultValue={field.value}
+                              value={field.value}
                               className="grid grid-cols-1 sm:grid-cols-3 gap-4"
                             >
                               <FormItem className="flex items-center space-x-3 space-y-0">
@@ -236,15 +236,14 @@ export default function Subscription() {
                                   <RadioGroupItem
                                     value="monthly"
                                     id="frequency-monthly"
-                                    className="peer hidden"
                                   />
                                 </FormControl>
                                 <FormLabel
                                   htmlFor="frequency-monthly"
-                                  className="w-full block border border-gray-200 rounded-lg p-4 cursor-pointer peer-checked:border-primary peer-checked:bg-primary/5"
+                                  className="w-full block border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-primary hover:bg-primary/5"
                                 >
-                                  <div className="font-medium text-gray-800">Monthly</div>
-                                  <div className="text-sm text-gray-600">Delivered every 28 days</div>
+                                  <div className="font-medium text-foreground">Monthly</div>
+                                  <div className="text-sm text-muted-foreground">Delivered every 28 days</div>
                                 </FormLabel>
                               </FormItem>
                               
@@ -253,15 +252,14 @@ export default function Subscription() {
                                   <RadioGroupItem
                                     value="bimonthly"
                                     id="frequency-bimonthly"
-                                    className="peer hidden"
                                   />
                                 </FormControl>
                                 <FormLabel
                                   htmlFor="frequency-bimonthly"
-                                  className="w-full block border border-gray-200 rounded-lg p-4 cursor-pointer peer-checked:border-primary peer-checked:bg-primary/5"
+                                  className="w-full block border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-primary hover:bg-primary/5"
                                 >
-                                  <div className="font-medium text-gray-800">Every 2 Months</div>
-                                  <div className="text-sm text-gray-600">Delivered every 56 days</div>
+                                  <div className="font-medium text-foreground">Every 2 Months</div>
+                                  <div className="text-sm text-muted-foreground">Delivered every 56 days</div>
                                 </FormLabel>
                               </FormItem>
                               
@@ -270,15 +268,14 @@ export default function Subscription() {
                                   <RadioGroupItem
                                     value="quarterly"
                                     id="frequency-quarterly"
-                                    className="peer hidden"
                                   />
                                 </FormControl>
                                 <FormLabel
                                   htmlFor="frequency-quarterly"
-                                  className="w-full block border border-gray-200 rounded-lg p-4 cursor-pointer peer-checked:border-primary peer-checked:bg-primary/5"
+                                  className="w-full block border border-gray-200 rounded-lg p-4 cursor-pointer hover:border-primary hover:bg-primary/5"
                                 >
-                                  <div className="font-medium text-gray-800">Quarterly</div>
-                                  <div className="text-sm text-gray-600">Delivered every 3 months</div>
+                                  <div className="font-medium text-foreground">Quarterly</div>
+                                  <div className="text-sm text-muted-foreground">Delivered every 3 months</div>
                                 </FormLabel>
                               </FormItem>
                             </RadioGroup>
@@ -290,7 +287,7 @@ export default function Subscription() {
                   </div>
 
                   <div>
-                    <h4 className="text-lg font-medium text-gray-800 mb-4">3. Delivery Address</h4>
+                    <h4 className="text-lg font-medium text-foreground mb-4">3. Delivery Address</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <FormField
                         control={form.control}
@@ -384,14 +381,14 @@ export default function Subscription() {
 
           <Card className="mt-6">
             <CardHeader>
-              <CardTitle>Need Supplies Urgently?</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-foreground">Need Supplies Urgently?</CardTitle>
+              <CardDescription className="text-muted-foreground">
                 Request emergency 1-hour delivery for your area.
               </CardDescription>
             </CardHeader>
             <CardContent>
               <Button 
-                className="bg-secondary hover:bg-secondary/90"
+                className="bg-secondary hover:bg-secondary/90 text-secondary-foreground"
                 onClick={() => setIsEmergencyModalOpen(true)}
               >
                 Request Emergency Delivery
@@ -409,22 +406,22 @@ export default function Subscription() {
               <CardContent>
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Subtotal:</span>
-                    <span className="font-medium text-gray-800">${totalPrice.toFixed(2)}</span>
+                    <span className="text-muted-foreground">Subtotal:</span>
+                    <span className="font-medium text-foreground">${totalPrice.toFixed(2)}</span>
                   </div>
                   
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Shipping:</span>
-                    <span className="font-medium text-gray-800">FREE</span>
+                    <span className="text-muted-foreground">Shipping:</span>
+                    <span className="font-medium text-foreground">FREE</span>
                   </div>
                   
                   <div className="pt-4 border-t border-gray-200 flex justify-between">
-                    <span className="text-gray-800 font-medium">Total per delivery:</span>
+                    <span className="text-foreground font-medium">Total per delivery:</span>
                     <span className="font-bold text-primary text-xl">${totalPrice.toFixed(2)}</span>
                   </div>
                 </div>
                 
-                <p className="text-sm text-gray-600 mb-6">
+                <p className="text-sm text-muted-foreground mb-6">
                   You can modify or cancel your subscription at any time.
                 </p>
               </CardContent>

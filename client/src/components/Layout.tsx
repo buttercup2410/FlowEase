@@ -3,6 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import MobileNav from "./MobileNav";
 import CartOverlay from "./CartOverlay";
+import PaymentSuccessModal from "./PaymentSuccessModal";
 
 interface LayoutProps {
   children: ReactNode;
@@ -18,6 +19,7 @@ export default function Layout({ children }: LayoutProps) {
       <Footer />
       <MobileNav />
       <CartOverlay />
+      <PaymentSuccessModal />
     </div>
   );
 }

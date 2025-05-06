@@ -6,7 +6,6 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useCart } from "@/contexts/CartContext";
 import { useSubscription } from "@/contexts/SubscriptionContext";
 import { useToast } from "@/hooks/use-toast";
-import PaymentSuccessModal from "./PaymentSuccessModal";
 
 export default function CartOverlay() {
   const { 
@@ -35,14 +34,15 @@ export default function CartOverlay() {
       date: new Date().toISOString().split('T')[0]
     });
     
-    setIsPaymentSuccessModalOpen(true);
-    toggleCart();
     clearCart();
+    setIsPaymentSuccessModalOpen(true);
     
     toast({
       title: "Order placed successfully",
       description: "Your payment has been processed.",
     });
+    
+    toggleCart();
   };
 
   const subtotal = getTotalPrice();
@@ -58,16 +58,16 @@ export default function CartOverlay() {
           className="absolute inset-0 bg-black bg-opacity-50"
           onClick={toggleCart}
         />
-        <div className="absolute inset-y-0 right-0 max-w-md w-full bg-white shadow-xl flex flex-col">
-          <div className="p-6 border-b border-gray-200 flex items-center justify-between">
-            <h3 className="text-xl font-semibold text-gray-800">
+        <div className="absolute inset-y-0 right-0 max-w-md w-full bg-background shadow-xl flex flex-col">
+          <div className="p-6 border-b border-border flex items-center justify-between">
+            <h3 className="text-xl font-semibold text-foreground">
               Your Cart ({cartItems.length})
             </h3>
             <Button 
               variant="ghost" 
               size="icon" 
               onClick={toggleCart}
-              className="text-gray-500 hover:text-gray-700"
+              className="text-muted-foreground hover:text-foreground"
             >
               <X className="h-5 w-5" />
             </Button>
@@ -78,7 +78,7 @@ export default function CartOverlay() {
               <ScrollArea className="flex-1 p-6">
                 <div className="space-y-6">
                   {cartItems.map((item) => (
-                    <div key={item.product.id} className="flex border-b border-gray-100 pb-4">
+                    <div key={item.product.id} className="flex border-b border-border pb-4">
                       <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
                         <img
                           src={item.product.imageUrl}
@@ -87,8 +87,8 @@ export default function CartOverlay() {
                         />
                       </div>
                       <div className="ml-4 flex-1">
-                        <h4 className="text-gray-800 font-medium">{item.product.name}</h4>
-                        <p className="text-sm text-gray-600">{item.product.shortDescription}</p>
+                        <h4 className="text-foreground font-medium">{item.product.name}</h4>
+                        <p className="text-sm text-muted-foreground">{item.product.shortDescription}</p>
                         <div className="flex justify-between items-center mt-2">
                           <div className="flex items-center">
                             <Button
@@ -99,7 +99,7 @@ export default function CartOverlay() {
                             >
                               <Minus className="h-3 w-3" />
                             </Button>
-                            <span className="mx-2 text-gray-800">{item.quantity}</span>
+                            <span className="mx-2 text-foreground">{item.quantity}</span>
                             <Button
                               variant="outline"
                               size="icon"
@@ -117,7 +117,7 @@ export default function CartOverlay() {
                       <Button
                         variant="ghost"
                         size="icon"
-                        className="ml-2 text-gray-400 hover:text-gray-600"
+                        className="ml-2 text-muted-foreground hover:text-foreground"
                         onClick={() => removeFromCart(item.product.id)}
                       >
                         <Trash2 className="h-4 w-4" />
@@ -127,22 +127,22 @@ export default function CartOverlay() {
                 </div>
               </ScrollArea>
 
-              <div className="p-6 border-t border-gray-200">
+              <div className="p-6 border-t border-border">
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Subtotal:</span>
-                    <span className="font-medium text-gray-800">${subtotal.toFixed(2)}</span>
+                    <span className="text-muted-foreground">Subtotal:</span>
+                    <span className="font-medium text-foreground">${subtotal.toFixed(2)}</span>
                   </div>
 
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Shipping:</span>
-                    <span className="font-medium text-gray-800">${shipping.toFixed(2)}</span>
+                    <span className="text-muted-foreground">Shipping:</span>
+                    <span className="font-medium text-foreground">${shipping.toFixed(2)}</span>
                   </div>
 
                   <Separator />
 
                   <div className="flex justify-between pt-2">
-                    <span className="text-gray-800 font-medium">Total:</span>
+                    <span className="text-foreground font-medium">Total:</span>
                     <span className="font-bold text-primary text-xl">${total.toFixed(2)}</span>
                   </div>
                 </div>
@@ -158,8 +158,8 @@ export default function CartOverlay() {
           ) : (
             <div className="flex-1 flex items-center justify-center p-6">
               <div className="text-center">
-                <h4 className="text-lg font-medium text-gray-800 mb-2">Your cart is empty</h4>
-                <p className="text-gray-600 mb-6">Browse our products and add items to your cart.</p>
+                <h4 className="text-lg font-medium text-foreground mb-2">Your cart is empty</h4>
+                <p className="text-muted-foreground mb-6">Browse our products and add items to your cart.</p>
                 <Button
                   onClick={toggleCart}
                   className="bg-primary hover:bg-primary/90"
@@ -171,8 +171,6 @@ export default function CartOverlay() {
           )}
         </div>
       </div>
-      
-      <PaymentSuccessModal />
     </Fragment>
   );
 }

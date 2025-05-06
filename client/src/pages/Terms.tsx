@@ -13,13 +13,13 @@ export default function Terms() {
         </CardHeader>
         <CardContent className="space-y-4">
           <p className="text-muted-foreground">
-            These Terms of Service govern your use of FlowCycle. By using our services, you agree 
+            These Terms of Service govern your use of FlowEase. By using our services, you agree 
             to these terms. Please read them carefully.
           </p>
           
           <h3 className="text-xl font-semibold mt-6">1. Service Description</h3>
           <p className="text-muted-foreground">
-            FlowCycle provides menstrual cycle tracking and product recommendation services to help users 
+            FlowEase provides menstrual cycle tracking and product recommendation services to help users 
             manage their menstrual health.
           </p>
           

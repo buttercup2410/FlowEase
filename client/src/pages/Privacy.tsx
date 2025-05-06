@@ -13,7 +13,7 @@ export default function Privacy() {
         </CardHeader>
         <CardContent className="space-y-4">
           <p className="text-muted-foreground">
-            This Privacy Policy explains how FlowCycle collects, uses, and protects your personal information 
+            This Privacy Policy explains how FlowEase collects, uses, and protects your personal information 
             when you use our services.
           </p>
           

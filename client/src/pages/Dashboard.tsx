@@ -16,8 +16,8 @@ export default function Dashboard() {
       <div className="container mx-auto px-4 py-8">
         <Card>
           <CardContent className="p-6">
-            <h2 className="text-xl font-semibold mb-4">Welcome to FlowCycle</h2>
-            <p className="mb-4">Please enter your cycle information to get started.</p>
+            <h2 className="text-xl font-semibold mb-4 text-foreground">Welcome to FlowEase</h2>
+            <p className="mb-4 text-foreground">Please enter your cycle information to get started.</p>
             <CycleDataForm />
           </CardContent>
         </Card>
@@ -28,43 +28,35 @@ export default function Dashboard() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-gray-800 font-heading">My Dashboard</h2>
-        <p className="text-gray-600">Welcome back! Here's your cycle overview.</p>
+        <h2 className="text-2xl font-bold text-foreground font-heading">FlowEase</h2>
+        <p className="text-muted-foreground">Welcome back! Here's your cycle overview.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
         {/* Cycle Data Summary */}
-        <div className="md:col-span-8 bg-white rounded-xl shadow-sm p-6">
+        <div className="md:col-span-8 bg-background rounded-xl shadow-sm p-6">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-xl font-semibold text-gray-800">Current Cycle</h3>
-            <Button 
-              variant="ghost" 
-              size="icon"
-              className="text-primary hover:text-primary/80"
-              onClick={toggleEditMode}
-            >
-              <Edit className="h-5 w-5" />
-            </Button>
+            <h3 className="text-xl font-semibold text-foreground">Current Cycle</h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-primary/10 rounded-lg p-4">
-              <p className="text-sm text-gray-600 mb-1">Start Date</p>
-              <p className="text-xl font-semibold text-gray-800">
+              <p className="text-sm text-muted-foreground mb-1">Start Date</p>
+              <p className="text-xl font-semibold text-foreground">
                 {format(new Date(cycleData.startDate), "MMM d, yyyy")}
               </p>
             </div>
 
             <div className="bg-primary/10 rounded-lg p-4">
-              <p className="text-sm text-gray-600 mb-1">Cycle Length</p>
-              <p className="text-xl font-semibold text-gray-800">
+              <p className="text-sm text-muted-foreground mb-1">Cycle Length</p>
+              <p className="text-xl font-semibold text-foreground">
                 {cycleData.cycleLength} days
               </p>
             </div>
 
             <div className="bg-primary/10 rounded-lg p-4">
-              <p className="text-sm text-gray-600 mb-1">Flow Type</p>
-              <p className="text-xl font-semibold text-gray-800 capitalize">
+              <p className="text-sm text-muted-foreground mb-1">Flow Type</p>
+              <p className="text-xl font-semibold text-foreground capitalize">
                 {cycleData.flowType}
               </p>
             </div>
@@ -72,22 +64,22 @@ export default function Dashboard() {
 
           {/* Cycle Calendar Visualization */}
           <div className="mt-8">
-            <h4 className="text-lg font-semibold text-gray-800 mb-4">Cycle Calendar</h4>
+            <h4 className="text-lg font-semibold text-foreground mb-4">Cycle Calendar</h4>
             <CycleCalendar />
           </div>
         </div>
 
         {/* Edit Cycle Data Form */}
-        <div className="md:col-span-4 bg-white rounded-xl shadow-sm p-6">
-          <h3 className="text-xl font-semibold text-gray-800 mb-6">Update Cycle Data</h3>
+        <div className="md:col-span-4 bg-background rounded-xl shadow-sm p-6">
+          <h3 className="text-xl font-semibold text-foreground mb-6">Update Cycle Data</h3>
           <CycleDataForm />
 
           {/* Product Recommendations */}
           <div className="mt-8">
-            <h4 className="text-lg font-semibold text-gray-800 mb-4">Recommendations</h4>
+            <h4 className="text-lg font-semibold text-foreground mb-4">Recommendations</h4>
             <div className="space-y-3">
               {recommendations.map((item) => (
-                <div key={item.id} className="bg-gray-100 rounded-lg p-3 flex items-center">
+                <div key={item.id} className="bg-muted rounded-lg p-3 flex items-center">
                   <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
                     {item.icon === "leaf" ? (
                       <Leaf className="text-primary" />
@@ -96,8 +88,8 @@ export default function Dashboard() {
                     )}
                   </div>
                   <div className="ml-3">
-                    <h5 className="font-medium text-gray-800">{item.name}</h5>
-                    <p className="text-xs text-gray-600">{item.description}</p>
+                    <h5 className="font-medium text-foreground">{item.name}</h5>
+                    <p className="text-xs text-muted-foreground">{item.description}</p>
                   </div>
                 </div>
               ))}

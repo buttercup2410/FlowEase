@@ -65,7 +65,7 @@ export function SubscriptionProvider({ children, userId }: SubscriptionProviderP
   // Load subscription from localStorage on initial load
   useEffect(() => {
     if (userId) {
-      const storedSubscription = localStorage.getItem(`flowcycle_subscription_${userId}`);
+      const storedSubscription = localStorage.getItem(`FlowEase_subscription_${userId}`);
       if (storedSubscription) {
         try {
           setSubscription(JSON.parse(storedSubscription));
@@ -74,7 +74,7 @@ export function SubscriptionProvider({ children, userId }: SubscriptionProviderP
         }
       }
 
-      const storedDeliveries = localStorage.getItem(`flowcycle_emergency_${userId}`);
+      const storedDeliveries = localStorage.getItem(`FlowEase_emergency_${userId}`);
       if (storedDeliveries) {
         try {
           setEmergencyDeliveries(JSON.parse(storedDeliveries));
@@ -89,7 +89,7 @@ export function SubscriptionProvider({ children, userId }: SubscriptionProviderP
   useEffect(() => {
     if (userId && subscription) {
       localStorage.setItem(
-        `flowcycle_subscription_${userId}`,
+        `FlowEase_subscription_${userId}`,
         JSON.stringify(subscription)
       );
     }
@@ -99,7 +99,7 @@ export function SubscriptionProvider({ children, userId }: SubscriptionProviderP
   useEffect(() => {
     if (userId) {
       localStorage.setItem(
-        `flowcycle_emergency_${userId}`,
+        `FlowEase_emergency_${userId}`,
         JSON.stringify(emergencyDeliveries)
       );
     }

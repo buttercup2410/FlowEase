@@ -1,50 +1,51 @@
-import { ReactNode, createContext, useContext } from 'react';
-import { QueryClientProvider } from "@tanstack/react-query";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { Toaster } from "@/components/ui/toaster";
+import { ReactNode } from "react";
 import { ThemeProvider } from "next-themes";
-import { queryClient } from "../lib/queryClient";
-import { AuthProvider, AuthContextType, useAuth } from './AuthContext';
-import { CycleDataProvider } from './CycleDataContext';
-import { CartProvider } from './CartContext';
-import { SubscriptionProvider } from './SubscriptionContext';
+import { Toaster } from "@/components/ui/toaster";
+import { AuthProvider, useAuth } from "./AuthContext";
+import { CartProvider } from "./CartContext";
+import { CycleDataProvider } from "./CycleDataContext";
+import { LanguageProvider } from "./LanguageContext";
+import { SubscriptionProvider } from "./SubscriptionContext";
 
-// For simplicity, let's just export useAuth as useAppAuth
-export const useAppAuth = useAuth;
-
-interface AppProvidersProps {
+type AppProvidersProps = {
   children: ReactNode;
-}
+};
 
-// This is the main component that provides the context structure for the entire app
 export function AppProviders({ children }: AppProvidersProps) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-        <TooltipProvider>
-          <AuthProvider>
-            <AppProviderChildren>
-              {children}
-            </AppProviderChildren>
-          </AuthProvider>
-        </TooltipProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <AuthProvider>
+        <LanguageProvider>
+          <AuthConsumer>
+            {(auth) => (
+              auth.user ? (
+                <CycleDataProvider userId={auth.user.id}>
+                  <CartProvider>
+                    <SubscriptionProvider userId={auth.user.id}>
+                      {children}
+                      <Toaster />
+                    </SubscriptionProvider>
+                  </CartProvider>
+                </CycleDataProvider>
+              ) : (
+                <>
+                  {children}
+                  <Toaster />
+                </>
+              )
+            )}
+          </AuthConsumer>
+        </LanguageProvider>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 
-// Create a separate component to consume the auth context
-function AppProviderChildren({ children }: { children: ReactNode }) {
+function AuthConsumer({ children }: { children: (auth: ReturnType<typeof useAuth>) => ReactNode }) {
   const auth = useAuth();
-  
-  return (
-    <CycleDataProvider userId={auth.user?.id}>
-      <CartProvider userId={auth.user?.id}>
-        <SubscriptionProvider userId={auth.user?.id}>
-          <Toaster />
-          {children}
-        </SubscriptionProvider>
-      </CartProvider>
-    </CycleDataProvider>
-  );
+  return <>{typeof children === "function" ? children(auth) : children}</>;
+}
+
+export function useAppAuth() {
+  return useAuth();
 }

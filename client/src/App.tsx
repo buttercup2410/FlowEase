@@ -13,6 +13,8 @@ import Privacy from "@/pages/Privacy";
 import Help from "@/pages/Help";
 import Layout from "@/components/Layout";
 import { useAppAuth } from "./contexts/AppProviders";
+import Profile from "@/pages/Profile";
+import Settings from "@/pages/Settings";
 
 function App() {
   const { isAuthenticated } = useAppAuth();
@@ -52,6 +54,8 @@ function App() {
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/products" component={Products} />
         <Route path="/subscription" component={Subscription} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/settings" component={Settings} />
         <Route path="/terms" component={Terms} />
         <Route path="/privacy" component={Privacy} />
         <Route path="/help" component={Help} />
