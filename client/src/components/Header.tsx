@@ -33,33 +33,37 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
-            <Link href="/dashboard">
-              <Button variant="ghost" className="p-0 flex items-center space-x-2">
-                <AppIcon className="h-8 w-8 text-primary" />
-                <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                  FlowCycle
-                </span>
-              </Button>
-            </Link>
+            <Button variant="ghost" className="p-0 flex items-center space-x-2" onClick={() => setLocation("/dashboard")}>
+              <AppIcon className="h-8 w-8 text-primary" />
+              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                FlowCycle
+              </span>
+            </Button>
           </div>
 
           <div className="flex items-center">
             <div className="hidden md:flex items-center space-x-6 mr-4">
-              <Link href="/dashboard">
-                <Button variant="ghost" className={`transition-colors ${isActive("/dashboard")}`}>
-                  Dashboard
-                </Button>
-              </Link>
-              <Link href="/products">
-                <Button variant="ghost" className={`transition-colors ${isActive("/products")}`}>
-                  Products
-                </Button>
-              </Link>
-              <Link href="/subscription">
-                <Button variant="ghost" className={`transition-colors ${isActive("/subscription")}`}>
-                  Subscription
-                </Button>
-              </Link>
+              <Button 
+                variant="ghost" 
+                className={`transition-colors ${isActive("/dashboard")}`}
+                onClick={() => setLocation("/dashboard")}
+              >
+                Dashboard
+              </Button>
+              <Button 
+                variant="ghost" 
+                className={`transition-colors ${isActive("/products")}`}
+                onClick={() => setLocation("/products")}
+              >
+                Products
+              </Button>
+              <Button 
+                variant="ghost" 
+                className={`transition-colors ${isActive("/subscription")}`}
+                onClick={() => setLocation("/subscription")}
+              >
+                Subscription
+              </Button>
             </div>
 
             <div className="relative">

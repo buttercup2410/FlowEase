@@ -15,7 +15,7 @@ interface CycleDataContextType {
   isEditMode: boolean;
   toggleEditMode: () => void;
   getPhaseForDate: (date: Date) => "menstruation" | "follicular" | "ovulation" | "luteal" | "none";
-  getSuggestedProducts: () => any[];
+  getRecommendations: () => any[];
 }
 
 const defaultCycleData: CycleData = {
@@ -90,11 +90,11 @@ export function CycleDataProvider({ children, userId }: CycleDataProviderProps) 
     }
   };
 
-  const getSuggestedProducts = () => {
+  const getRecommendations = () => {
     if (!cycleData) return [];
     
-    // Suggest products based on flow type
-    const flowBasedSuggestions = {
+    // Recommend products based on flow type
+    const flowBasedRecommendations = {
       light: [
         { 
           id: 1, 
@@ -153,7 +153,7 @@ export function CycleDataProvider({ children, userId }: CycleDataProviderProps) 
       ]
     };
     
-    return flowBasedSuggestions[cycleData.flowType];
+    return flowBasedRecommendations[cycleData.flowType];
   };
 
   return (
@@ -164,7 +164,7 @@ export function CycleDataProvider({ children, userId }: CycleDataProviderProps) 
         isEditMode,
         toggleEditMode,
         getPhaseForDate,
-        getSuggestedProducts
+        getRecommendations
       }}
     >
       {children}

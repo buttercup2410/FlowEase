@@ -30,21 +30,27 @@ export default function Footer() {
           
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 items-center">
             <div className="flex space-x-4">
-              <Link href="/terms">
-                <a className="text-sm text-muted-foreground hover:text-foreground">
-                  Terms
-                </a>
-              </Link>
-              <Link href="/privacy">
-                <a className="text-sm text-muted-foreground hover:text-foreground">
-                  Privacy
-                </a>
-              </Link>
-              <Link href="/help">
-                <a className="text-sm text-muted-foreground hover:text-foreground">
-                  Help
-                </a>
-              </Link>
+              <Button 
+                variant="link" 
+                className="p-0 h-auto text-sm text-muted-foreground hover:text-foreground"
+                onClick={() => window.location.href = "/terms"}
+              >
+                Terms
+              </Button>
+              <Button 
+                variant="link" 
+                className="p-0 h-auto text-sm text-muted-foreground hover:text-foreground"
+                onClick={() => window.location.href = "/privacy"}
+              >
+                Privacy
+              </Button>
+              <Button 
+                variant="link" 
+                className="p-0 h-auto text-sm text-muted-foreground hover:text-foreground"
+                onClick={() => window.location.href = "/help"}
+              >
+                Help
+              </Button>
             </div>
             
             {mounted && (
