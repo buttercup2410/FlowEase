@@ -92,7 +92,7 @@ export default function CycleDataForm() {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {Array.from({ length: 15 }, (_, i) => i + 21).map((days) => (
+                  {Array.from({ length: 31 }, (_, i) => i + 1).map((days) => (
                     <SelectItem key={days} value={days.toString()}>
                       {days} days
                     </SelectItem>

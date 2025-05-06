@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Edit, Leaf, Droplet } from "lucide-react";
 
 export default function Dashboard() {
-  const { cycleData, toggleEditMode, getSuggestedProducts } = useCycleData();
-  const suggestions = getSuggestedProducts();
+  const { cycleData, toggleEditMode, getRecommendations } = useCycleData();
+  const recommendations = getRecommendations();
 
   if (!cycleData) {
     return (
@@ -82,22 +82,22 @@ export default function Dashboard() {
           <h3 className="text-xl font-semibold text-gray-800 mb-6">Update Cycle Data</h3>
           <CycleDataForm />
 
-          {/* Product Suggestions */}
+          {/* Product Recommendations */}
           <div className="mt-8">
-            <h4 className="text-lg font-semibold text-gray-800 mb-4">Suggested Products</h4>
+            <h4 className="text-lg font-semibold text-gray-800 mb-4">Recommendations</h4>
             <div className="space-y-3">
-              {suggestions.map((suggestion) => (
-                <div key={suggestion.id} className="bg-gray-100 rounded-lg p-3 flex items-center">
+              {recommendations.map((item) => (
+                <div key={item.id} className="bg-gray-100 rounded-lg p-3 flex items-center">
                   <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
-                    {suggestion.icon === "leaf" ? (
+                    {item.icon === "leaf" ? (
                       <Leaf className="text-primary" />
                     ) : (
                       <Droplet className="text-primary" />
                     )}
                   </div>
                   <div className="ml-3">
-                    <h5 className="font-medium text-gray-800">{suggestion.name}</h5>
-                    <p className="text-xs text-gray-600">{suggestion.description}</p>
+                    <h5 className="font-medium text-gray-800">{item.name}</h5>
+                    <p className="text-xs text-gray-600">{item.description}</p>
                   </div>
                 </div>
               ))}
