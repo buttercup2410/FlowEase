@@ -2,11 +2,12 @@ import { Heart } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Button } from "./ui/button";
-import { Link } from "wouter";
+import { useLocation } from "wouter";
 
 export default function Footer() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [_, setLocation] = useLocation();
 
   // Ensure theme component doesn't render until mounted to avoid hydration mismatch
   useEffect(() => {
@@ -33,21 +34,21 @@ export default function Footer() {
               <Button 
                 variant="link" 
                 className="p-0 h-auto text-sm text-muted-foreground hover:text-foreground"
-                onClick={() => window.location.href = "/terms"}
+                onClick={() => setLocation("/terms")}
               >
                 Terms
               </Button>
               <Button 
                 variant="link" 
                 className="p-0 h-auto text-sm text-muted-foreground hover:text-foreground"
-                onClick={() => window.location.href = "/privacy"}
+                onClick={() => setLocation("/privacy")}
               >
                 Privacy
               </Button>
               <Button 
                 variant="link" 
                 className="p-0 h-auto text-sm text-muted-foreground hover:text-foreground"
-                onClick={() => window.location.href = "/help"}
+                onClick={() => setLocation("/help")}
               >
                 Help
               </Button>

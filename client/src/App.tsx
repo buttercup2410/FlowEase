@@ -8,6 +8,9 @@ import Register from "@/pages/Register";
 import Dashboard from "@/pages/Dashboard";
 import Products from "@/pages/Products";
 import Subscription from "@/pages/Subscription";
+import Terms from "@/pages/Terms";
+import Privacy from "@/pages/Privacy";
+import Help from "@/pages/Help";
 import Layout from "@/components/Layout";
 import { useAppAuth } from "./contexts/AppProviders";
 
@@ -49,6 +52,9 @@ function App() {
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/products" component={Products} />
         <Route path="/subscription" component={Subscription} />
+        <Route path="/terms" component={Terms} />
+        <Route path="/privacy" component={Privacy} />
+        <Route path="/help" component={Help} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
