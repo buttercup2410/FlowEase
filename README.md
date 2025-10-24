@@ -1,4 +1,4 @@
-# 🌷 [FlowCycle](https://flowcycle.netlify.app/) 
+# 🌷 [FlowEase](https://flowcycle.netlify.app/) 
 
 https://flowcycle.netlify.app/
 
