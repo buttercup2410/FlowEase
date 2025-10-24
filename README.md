@@ -2,9 +2,9 @@
 
 https://flowcycle.netlify.app/
 
-FlowCycle is a modern web application built with React, Express, and TypeScript, featuring a robust full-stack architecture with real-time capabilities.
+FlowEase is a modern web application built with React, Express, and TypeScript, featuring a robust full-stack architecture with real-time capabilities.
 
-FlowCycle is a comprehensive menstrual cycle tracking and period product delivery application. It helps users track their menstrual cycles while providing personalized product recommendations and subscription-based delivery of period products. The app features a user-friendly dashboard for cycle visualization, customizable product subscriptions, and emergency delivery options when needed.
+FlowEase is a comprehensive menstrual cycle tracking and period product delivery application. It helps users track their menstrual cycles while providing personalized product recommendations and subscription-based delivery of period products. The app features a user-friendly dashboard for cycle visualization, customizable product subscriptions, and emergency delivery options when needed.
 
 ## ✨ Features
 
